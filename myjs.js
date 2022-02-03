@@ -1,32 +1,33 @@
 let u = document.getElementById("player1");
 let c = document.getElementById("player2");
+
 //first user choises
 document.querySelector(".rock").addEventListener("click", function () {
     uChoice("r");
-    user.classList.add("shake");
+    u.classList.add("shake");
     setTimeout(() => {
-        user.classList.remove("shake");
-        user.classList.add("rock");
+        u.classList.remove("shake");
+        u.classList.add("rock");
     }, 1800);
     console.log("hallp");
 
 });
 document.querySelector(".scissors").addEventListener("click", function () {
     uChoice("s");
-    user.classList.add("shake");
+    u.classList.add("shake");
     setTimeout(() => {
-        user.classList.remove("shake");
-        user.classList.add("scissors");
+        u.classList.remove("shake");
+        u.classList.add("scissors");
     }, 1800);
 
 });
 
 document.querySelector(".paper").addEventListener("click", function () {
     uChoice("p");
-    user.classList.add("shake");
+    u.classList.add("shake");
     setTimeout(() => {
-        user.classList.remove("shake");
-        user.classList.add("paper");
+        u.classList.remove("shake");
+        u.classList.add("paper");
     }, 1800);
 
 });
@@ -35,60 +36,68 @@ document.querySelector(".paper").addEventListener("click", function () {
 //compchoices in userchoice function so that when user choices is triggered the computer choices will be triggered
 
 function uChoice(uChoice) {
-    function compChoice() {
+    function cChoice() {
+        console.log("work");
         let value = Math.floor(Math.random() * 3);
         if (value === 0) {
-            comp.classList.add("shake");
+            c.classList.add("shake");
             setTimeout(() => {
-                comp.classList.remove("shake");
-                comp.classList.add("paper");
+                c.classList.remove("shake");
+                c.classList.add("paper");
             }, 1800);
             return "p";
         } else if (value === 1) {
-            comp.classList.add("shake");
+            c.classList.add("shake");
             setTimeout(() => {
-                comp.classList.remove("shake");
-                comp.classList.add("rock");
+                c.classList.remove("shake");
+                c.classList.add("rock");
             }, 1800);
             return "r";
         } else if (value === 2) {
-            comp.classList.add("shake");
+            c.classList.add("shake");
             setTimeout(() => {
-                comp.classList.remove("shake");
-                comp.classList.add("scissors");
+                c.classList.remove("shake");
+                c.classList.add("scissors");
             }, 1800);
             return "s";
         }
     }
+    let cChoiceValue = cChoice();
+
 }
+
 //results when both player played 
-let compChoiceValue = compChoice();
-if (userChoice === "s") {
-    if (compChoiceValue === "r") {
+
+
+if (uChoice === "s") {
+    if (cChoiceValue === "r") {
         displayResult("lose");
-    } else if (compChoiceValue === "p") {
+    } else if (cChoiceValue === "p") {
         displayResult("win");
-    } else if (compChoiceValue === "s") {
+    } else if (cChoiceValue === "s") {
         displayResult("draw");
     }
 
-} else if (userChoice === "r") {
-    if (compChoiceValue === "r") {
+} else if (uChoice === "r") {
+    if (cChoiceValue === "r") {
         displayResult("draw");
-    } else if (compChoiceValue === "p") {
+    } else if (cChoiceValue === "p") {
         displayResult("lose");
-    } else if (compChoiceValue === "s") {
+    } else if (cChoiceValue === "s") {
         displayResult("win");
     }
-} else if (userChoice === "p") {
-    if (compChoiceValue === "r") {
+} else if (uChoice === "p") {
+    if (cChoiceValue === "r") {
         displayResult("win");
-    } else if (compChoiceValue === "p") {
+    } else if (cChoiceValue === "p") {
         displayResult("draw");
-    } else if (compChoiceValue === "s") {
+    } else if (cChoiceValue === "s") {
         displayResult("lose");
     }
 }
+
+
+
 
 //when result is shown and window should reload
 function displayResult(result) {
@@ -98,4 +107,5 @@ function displayResult(result) {
     setTimeout(() => {
         window.location.reload();
     }, 3200);
+
 }
